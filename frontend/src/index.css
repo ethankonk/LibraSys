@@ -1,0 +1,286 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Books */
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #acacac;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+  width: 250px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.book-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.book-details {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.book-title {
+  font-size: 1.4em;
+  margin-bottom: 5px;
+  color: #5F6F52;
+}
+
+.author {
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.price {
+  font-weight: bold;
+  color: #008cba;
+}
+
+.borrow-button {
+  background-color: #A9B388;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.borrow-button:hover {
+  background-color: #B99470;
+}
+
+
+/* Navbar */
+
+.top-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  color: #fff;
+  padding: 20px 60px;
+}
+
+.website-name {
+  font-size: 1.5em;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: space-between;
+  width: 7%;
+  align-items: center;
+}
+
+.logo {
+  max-width: 70px;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.checkout-cart {
+  display: flex;
+  align-items: center;
+  font-size: 1.2em;
+  padding: 0 20px
+}
+
+/* Hero */
+
+.hero-banner {
+  background-color: transparent;
+  color: #e0e0e0; /* Text color */
+  padding: 100px 0 115px 0; /* Adjust padding as needed */
+  text-align: center;
+  margin-bottom: 215px;
+}
+
+.hero-banner h1 {
+  font-size: 6em;
+  margin-bottom: 20px;
+}
+
+.hero-banner p {
+  font-size: 2.4em;
+}
+
+/* Footer */
+
+.footer-container {
+  display: grid;
+  background-color: #1c1c1c; /* Footer background color */
+  color: #fff; /* Text color */
+  padding: 160px 0;
+  text-align: center;
+}
+
+.footer-links a {
+  color: #fff; /* Link color */
+  text-decoration: none;
+  margin: 0 10px; /* Adjust spacing between links */
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-text {
+  margin-top: 10px;
+  font-size: 0.8em; /* Adjust text size as needed */
+}
+
+/* Cart Preview */
+
+.shopping-cart-preview {
+  position: fixed;
+  top: 0;
+  /* right: -100%; */
+  width: 35%;
+  height: 100%;
+  background-color: #fff;
+  border: 1px solid black;
+  z-index: 1000000;
+  transition: right 0.3s ease;
+}
+
+.shopping-cart-preview.open {
+  right: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.5); /* Added a background color with opacity for better readability */
+}
+
+.cart-content {
+  height: calc(100% - 120px);
+  overflow-y: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Centered header content vertically */
+  padding: 10px 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  color: #555;
+}
+
+.close-btn:hover {
+  color: #333;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item-details {
+  display: flex;
+  align-items: center; 
+  padding: 10px 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+.items p {
+  text-align: left;
+  margin: 0; 
+}
+
+.item-details img {
+  width: 50px;
+  height: auto;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+
+.cart-button {
+  margin-bottom: 10px;
+}
+
+/* Star Canvas */
+
+.canvas {
+  width: 100%;
+  height: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background-color: #000000;
+  position: absolute;
+}
+
+/* Buttons */
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.primary {
+  background-color: #a27408; /* Primary color */
+  color: #fff;
+}
+
+.primary:hover {
+  background-color: #644806; /* Darker shade of primary color on hover */
+}
+
+.secondary {
+  background-color: #ffffff;
+  font-weight: normal;
+  border: 1px solid black;
+  color: rgb(0, 0, 0);
+}
+
+.secondary:hover {
+  background-color: #c4c4c4;
+}
+
+.cart {
+  width: 90%;
+  padding: 15px;
+}
