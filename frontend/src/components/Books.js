@@ -16,7 +16,7 @@ export default function Books ( { id, title, author, price, imageUrl, addToCart 
             <h2 className="book-title">{title}</h2>
             <p className="author">{author}</p>
             <p className="price">${price}</p>
-            <button className="button secondary" onClick={handleBorrow}>Add to Cart WEE</button>
+            <button className="button secondary" onClick={handleBorrow}>Add to Cart</button>
           </div>
         </div>
       );
