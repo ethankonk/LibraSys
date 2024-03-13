@@ -20,7 +20,7 @@ const ProfilePreview = ({ user, toggleProfile }) => {
                                 <p className='user-email'>{user.email}</p>
                             </div>
                         </div>
-                        <button className='button signout-button'>Sign Out</button>
+                        <button className='button secondary signout-button'>Sign Out</button>
                     </div>
                 </motion.div>
             </div>

@@ -279,11 +279,12 @@ ul {
   text-align: center;
   top: 13vh;
   width: 40vh;
-  height: 25vh;
+  height: auto;
   border-radius: 10px;
   background-color: #ffffffee;
   border: 1px solid black;
   right: 10vh;
+  padding-bottom: 20px;
 }
 
 .profile-container {
@@ -369,10 +370,9 @@ ul {
 }
 
 .signout-button {
-  margin: 10px 10px 0px 10px;
+  margin: 30px 10px 0px 10px;
   padding: 10px 0px;
-  background-color: #a27408; /* Primary color */
-  color: #fff;
+  font-weight: bold;
 }
 
 .login {
