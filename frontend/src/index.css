@@ -73,11 +73,11 @@ code {
 
 .top-navbar {
   display: flex;
-  width: 90%;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   color: #fff;
-  padding: 20px 60px;
+  padding: 20px 0px 20px 0px;
 }
 
 .transparent{
@@ -96,6 +96,7 @@ code {
   display: flex;
   justify-content: space-between;
   width: 7%;
+  padding-left: 60px;
   align-items: center;
 }
 
@@ -109,7 +110,7 @@ code {
   display: flex;
   align-items: center;
   font-size: 1.2em;
-  padding: 0 20px
+  padding-right: 60px;
 }
 
 .profile-button {
