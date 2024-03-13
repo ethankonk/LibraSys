@@ -15,7 +15,7 @@ export default function CartPreview({ isOpen, onClose, cartItems }) {
     <div>
       <motion.div
         className={'shopping-cart-preview'}
-        initial={{ x: 0 }} 
+        initial={{ x: '100%' }} 
         animate={{ x: isOpen ? 0 : '100%' }}
         transition={{ type: 'spring', stiffness: 200, damping: 25, duration: 0.1 }}
       >

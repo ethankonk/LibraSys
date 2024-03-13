@@ -4,13 +4,13 @@ import logo from '../images/logo.png'
 import { FaRegUser } from "react-icons/fa"
 import { Link } from 'react-router-dom'
 
-export default function Navbar ({ cart, inCart, toggleCart, toggleProfile, isLoggedIn }) {
+export default function Navbar ({ cart, inCart, toggleCart, toggleProfile, isLoggedIn, background }) {
     const handleMenuClick = () => {
         console.log(inCart)
     }
 
     return (
-        <div className="top-navbar">
+        <div className={`top-navbar ${background}`}>
           <div className="logo-container">
             <img className="logo" src={ logo } />
           </div>  

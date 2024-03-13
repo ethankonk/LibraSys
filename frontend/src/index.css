@@ -76,9 +76,16 @@ code {
   width: 90%;
   justify-content: space-between;
   align-items: center;
-  background-color: transparent;
   color: #fff;
   padding: 20px 60px;
+}
+
+.transparent{
+  background-color: transparent;
+}
+
+.black {
+  background-color: black;
 }
 
 .website-name {

@@ -1,18 +1,12 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import Navbar from './components/Navbar';
+
 import Footer from './components/Footer';
-import CartPreview from './components/CartPreview';
 import Main from './components/Main'
-import ProfilePreview from './components/ProfilePreview';
+
 
 function App() {
-  const [borrowedBooks, setBorrowedBooks] = useState([])
-  const [cartCount, setCartCount] = useState(0)
-  const [cartIsOpen, setCartIsOpen] = useState(false)
   const [booksData, setBooksData] = useState([])
-  const [profileIsOpen, setProfileIsOpen] = useState(false)
-  const [atHome, setAtHome] = useState(true)
 
   useEffect(() => {
     // Fetch books data from PHP file
@@ -32,40 +26,9 @@ function App() {
       });
   }, []);
 
-  const addToCart = (id) => {
-    setBorrowedBooks(prevBorrowedBooks => {
-      return [...prevBorrowedBooks, id]
-    })
-    setCartCount(cartCount+1)
-  }
-
-  const clearCart = () => {
-    setBorrowedBooks([])
-    setCartCount(0)
-  }
-
-  const toggleCart = () => {
-    setCartIsOpen(!cartIsOpen)
-  }
- 
-  const toggleProfile = () => {
-    setProfileIsOpen(!profileIsOpen)
-  }
-
-  const testUser = {
-    name: "John Doe",
-    email: "john.doe@example.com",
-    profilePicture: "profile-picture.jpeg"
-  };
-
-  
-
   return (
     <div className="App">
-      <CartPreview onClose={toggleCart} isOpen={cartIsOpen} cartItems={booksData} />
-      <Navbar atHome={atHome} cart={cartCount} inCart={borrowedBooks} toggleProfile={toggleProfile} isLoggedIn={false} toggleCart={toggleCart} />
-      {profileIsOpen && <ProfilePreview user={testUser} toggleProfile={toggleProfile} isOpen={true} />}
-      <Main booksData={booksData} cartCount={cartCount} addToCart={addToCart} />
+      <Main booksData={booksData} />
       <Footer />
     </div>
   );
