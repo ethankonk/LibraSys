@@ -55,7 +55,7 @@ function App() {
   const testUser = {
     name: "John Doe",
     email: "john.doe@example.com",
-    profilePicture: "path/to/profile-picture.jpg"
+    profilePicture: "profile-picture.jpeg"
   };
 
   return (

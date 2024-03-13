@@ -1,7 +1,7 @@
 import React from 'react'
 import '../index.css'
 import logo from '../images/logo.png'
-import { FaUser } from 'react-icons/fa';
+import { FaRegUser } from "react-icons/fa";
 
 export default function Navbar ({ cart, inCart, clearCart, toggleCart }) {
     const handleMenuClick = () => {
@@ -14,6 +14,7 @@ export default function Navbar ({ cart, inCart, clearCart, toggleCart }) {
             <img className="logo" src={ logo } />
           </div>  
           <div className="checkout-cart">
+            <button className='profile-button'><FaRegUser className='profile' /></button>
             <button className='button primary' onClick={()=>toggleCart()}>Cart ({cart})</button>
           </div>
         </div>

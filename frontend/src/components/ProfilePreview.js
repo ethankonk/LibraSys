@@ -6,11 +6,14 @@ const ProfilePreview = ({ user, isLoggedIn, onClose }) => {
         <div>
             {isLoggedIn ? 
             <div className='profile-preview'>
-                <img src={user.profilepicture} className='profile-picture' />
                 <div className='user-info'>
-                    <h2 className='user-name'>{user.name}</h2>
-                    <p className='user-email'>{user.email}</p>
-                </div> 
+                    <img src={require(`../images/${user.profilePicture}`)} className='profile-picture' />
+                    <div>
+                        <h2 className='user-name'>{user.name}</h2>
+                        <p className='user-email'>{user.email}</p>
+                    </div>
+                </div>
+                <button className='button signout-button'>Sign Out</button>
             </div>
             : 
             <div>

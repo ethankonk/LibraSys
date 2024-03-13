@@ -45,7 +45,7 @@ export default function CartPreview({ isOpen, onClose, cartItems }) {
         </div>
       </motion.div>
       {isOpen && <motion.div
-          className="overlay"
+          className="cart-overlay"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
