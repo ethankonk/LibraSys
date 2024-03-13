@@ -6,6 +6,7 @@ import Hero from './components/Hero';
 import Footer from './components/Footer';
 import StarsCanvas from './components/StarsCanvas';
 import CartPreview from './components/CartPreview';
+import ProfilePreview from './components/ProfilePreview';
 
 function App() {
   const [borrowedBooks, setBorrowedBooks] = useState([])
@@ -47,11 +48,21 @@ function App() {
     setCartIsOpen(!cartIsOpen)
   }
  
+  const toggleProfile = () => {
+    console.log("Profile clicked")
+  }
+
+  const testUser = {
+    name: "John Doe",
+    email: "john.doe@example.com",
+    profilePicture: "path/to/profile-picture.jpg"
+  };
 
   return (
     <div className="App">
       <CartPreview onClose={toggleCart} isOpen={cartIsOpen} cartItems={booksData} />
       <Navbar cart={cartCount} inCart={borrowedBooks} clearCart={clearCart} toggleCart={toggleCart} />
+      <ProfilePreview user={testUser} isLoggedIn={true} onClose={toggleProfile} isOpen={true} />
       <Hero />
       <StarsCanvas />
       <div className= "book-container"> 

@@ -73,6 +73,7 @@ code {
 
 .top-navbar {
   display: flex;
+  width: 90%;
   justify-content: space-between;
   align-items: center;
   background-color: transparent;
@@ -108,15 +109,15 @@ code {
 
 .hero-banner {
   background-color: transparent;
-  color: #e0e0e0; /* Text color */
-  padding: 100px 0 115px 0; /* Adjust padding as needed */
+  width: 100%;
+  height: calc(100vh - 25vh);
+  color: #e0e0e0;
+  padding-top: 15vh; 
   text-align: center;
-  margin-bottom: 215px;
 }
 
 .hero-banner h1 {
   font-size: 6em;
-  margin-bottom: 20px;
 }
 
 .hero-banner p {
@@ -230,7 +231,7 @@ ul {
 
 .canvas {
   width: 100%;
-  height: auto;
+  height: 100vh;
   top: 0;
   right: 0;
   bottom: 0;
@@ -238,6 +239,79 @@ ul {
   z-index: -1;
   background-color: #000000;
   position: absolute;
+}
+
+/* Profile Preview */
+.profile-preview {
+  position: absolute;
+  display: grid;
+  grid-template-columns: 1fr 3fr; 
+  grid-gap: 2px;
+  text-align: center;
+  top: 13vh;
+  width: 40vh;
+  height: 30vh;
+  border-radius: 5px;
+  background-color: #ffffffee;
+  border: 1px solid black;
+  z-index: 1000000;
+  right: 12vh;
+  
+}
+
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.user-name {
+  font-weight: bold;
+  font-size: 2em;
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
+.user-name{
+  padding: 0
+}
+
+.user-email {
+  font-size: 0.9em;
+  color: #666;
+  padding: 0
+}
+
+.profile-picture {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.not-signed-in {
+  margin-bottom: 10px;
+}
+
+.login-button,
+.signup-button {
+  margin-right: 10px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 /* Buttons */

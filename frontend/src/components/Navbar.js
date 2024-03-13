@@ -1,8 +1,7 @@
 import React from 'react'
 import '../index.css'
 import logo from '../images/logo.png'
-import { FaShoppingCart } from 'react-icons/fa';
-import StarsCanvas from './StarsCanvas';
+import { FaUser } from 'react-icons/fa';
 
 export default function Navbar ({ cart, inCart, clearCart, toggleCart }) {
     const handleMenuClick = () => {
