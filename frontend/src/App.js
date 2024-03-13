@@ -13,6 +13,7 @@ function App() {
   const [cartCount, setCartCount] = useState(0)
   const [cartIsOpen, setCartIsOpen] = useState(false)
   const [booksData, setBooksData] = useState([])
+  const [profileIsOpen, setProfileIsOpen] = useState(false)
 
   useEffect(() => {
     // Fetch books data from PHP file
@@ -49,7 +50,7 @@ function App() {
   }
  
   const toggleProfile = () => {
-    console.log("Profile clicked")
+    setProfileIsOpen(!profileIsOpen)
   }
 
   const testUser = {
@@ -61,8 +62,8 @@ function App() {
   return (
     <div className="App">
       <CartPreview onClose={toggleCart} isOpen={cartIsOpen} cartItems={booksData} />
-      <Navbar cart={cartCount} inCart={borrowedBooks} clearCart={clearCart} toggleCart={toggleCart} />
-      <ProfilePreview user={testUser} isLoggedIn={true} onClose={toggleProfile} isOpen={true} />
+      <Navbar cart={cartCount} inCart={borrowedBooks} toggleProfile={toggleProfile} isLoggedIn={false} toggleCart={toggleCart} />
+      {profileIsOpen && <ProfilePreview user={testUser} toggleProfile={toggleProfile} isOpen={true} />}
       <Hero />
       <StarsCanvas />
       <div className= "book-container"> 
