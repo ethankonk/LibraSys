@@ -50,7 +50,7 @@ function App() {
 
   return (
     <div className="App">
-      {cartIsOpen && <CartPreview onClose={toggleCart} isOpen={true} cartItems={booksData} />}
+      <CartPreview onClose={toggleCart} isOpen={cartIsOpen} cartItems={booksData} />
       <Navbar cart={cartCount} inCart={borrowedBooks} clearCart={clearCart} toggleCart={toggleCart} />
       <Hero />
       <StarsCanvas />

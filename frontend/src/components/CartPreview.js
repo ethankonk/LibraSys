@@ -14,8 +14,8 @@ export default function CartPreview({ isOpen, onClose, cartItems }) {
   return (
     <div>
       <motion.div
-        className={`shopping-cart-preview ${isOpen ? 'open' : ''}`}
-        initial={{ x: '100%' }} 
+        className={'shopping-cart-preview'}
+        initial={{ x: 0 }} 
         animate={{ x: isOpen ? 0 : '100%' }}
         transition={{ type: 'spring', stiffness: 200, damping: 25, duration: 0.1 }}
       >
@@ -44,13 +44,13 @@ export default function CartPreview({ isOpen, onClose, cartItems }) {
           <CartButton totalPrice={totalPrice} />
         </div>
       </motion.div>
-      <motion.div
-        className="overlay"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        onClick={onClose}
-      ></motion.div>
+      {isOpen && <motion.div
+          className="overlay"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose}
+        ></motion.div>}
     </div>
   );
 }
