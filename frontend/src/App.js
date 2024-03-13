@@ -1,11 +1,9 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import Books from './components/Books';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
 import Footer from './components/Footer';
-import StarsCanvas from './components/StarsCanvas';
 import CartPreview from './components/CartPreview';
+import Main from './components/Main'
 import ProfilePreview from './components/ProfilePreview';
 
 function App() {
@@ -14,6 +12,7 @@ function App() {
   const [cartIsOpen, setCartIsOpen] = useState(false)
   const [booksData, setBooksData] = useState([])
   const [profileIsOpen, setProfileIsOpen] = useState(false)
+  const [atHome, setAtHome] = useState(true)
 
   useEffect(() => {
     // Fetch books data from PHP file
@@ -59,36 +58,17 @@ function App() {
     profilePicture: "profile-picture.jpeg"
   };
 
+  
+
   return (
     <div className="App">
       <CartPreview onClose={toggleCart} isOpen={cartIsOpen} cartItems={booksData} />
-      <Navbar cart={cartCount} inCart={borrowedBooks} toggleProfile={toggleProfile} isLoggedIn={false} toggleCart={toggleCart} />
+      <Navbar atHome={atHome} cart={cartCount} inCart={borrowedBooks} toggleProfile={toggleProfile} isLoggedIn={false} toggleCart={toggleCart} />
       {profileIsOpen && <ProfilePreview user={testUser} toggleProfile={toggleProfile} isOpen={true} />}
-      <Hero />
-      <StarsCanvas />
-      <div className= "book-container"> 
-        {booksData.map(book => (
-          <Books
-            key={book.id}
-            id={book.id}
-            title={book.title}
-            author={book.author}
-            price={book.price}
-            imageUrl={book.imageUrl}
-            cart={cartCount}
-            addToCart={addToCart}
-          />
-        ))}
-      </div>
+      <Main booksData={booksData} cartCount={cartCount} addToCart={addToCart} />
       <Footer />
     </div>
   );
 }
 
 export default App;
-
-
-
-// DB Name:  konkoloe_LibrarySystem
-// DB User:  konkoloe_LibrarySystem
-// Password: F7pL5RwuzP9pcxN33Zwx

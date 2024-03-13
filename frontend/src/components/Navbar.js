@@ -1,7 +1,8 @@
 import React from 'react'
 import '../index.css'
 import logo from '../images/logo.png'
-import { FaRegUser } from "react-icons/fa";
+import { FaRegUser } from "react-icons/fa"
+import { Link } from 'react-router-dom'
 
 export default function Navbar ({ cart, inCart, toggleCart, toggleProfile, isLoggedIn }) {
     const handleMenuClick = () => {
@@ -17,7 +18,10 @@ export default function Navbar ({ cart, inCart, toggleCart, toggleProfile, isLog
             { isLoggedIn ? 
             <button className='profile-button' onClick={()=>toggleProfile()}><FaRegUser className='profile' /></button>
             :
-            <button className='button login'>Login</button> }
+            <Link to='/BookPage'>
+              <button className='button login'>Login</button>
+            </Link> 
+            }
             <button className='button primary' onClick={()=>toggleCart()}>Cart ({cart})</button>
           </div>
         </div>
