@@ -36,18 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-/* Book Container */
-
-/* Book Container */
-.book-container {
-  position: relative; /* Set position to relative */
-  margin: 0 auto; /* Center the container horizontally */
-  padding: 20px 50px 20px 50px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); 
-  grid-gap: 20px;
-  justify-items: center;
-  background-color: rgb(255, 255, 255);
-  z-index: 1; /* Ensure the container is above the star canvas */
-}

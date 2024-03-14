@@ -1,6 +1,6 @@
 import '../index.css'
 
-export default function Login ({ setUsername, setPassword, handleLogin, username, password }) {
+export default function Login ({ setEmail, setPassword, handleLogin, email, password, toggleAuthMethod }) {
     
     return (
         <div className="login-page">
@@ -8,9 +8,9 @@ export default function Login ({ setUsername, setPassword, handleLogin, username
                 <h2>Login</h2>
                 <input
                 type="text"
-                placeholder="Username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 />
                 <input
                 type="password"
@@ -19,6 +19,8 @@ export default function Login ({ setUsername, setPassword, handleLogin, username
                 onChange={(e) => setPassword(e.target.value)}
                 />
                 <button className='button secondary login2' onClick={()=>handleLogin()}>Login</button>
+                <p>or</p>
+                <button className='button primary signup' onClick={()=>toggleAuthMethod()}>Sign Up</button>
             </div>
         </div>
     );

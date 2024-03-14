@@ -2,6 +2,7 @@ import React from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import '../index.css';
+import '../css/cart-preview.css'
 
 const CartButton = ({ totalPrice }) => {
   const formattedPrice = typeof totalPrice === 'number' ? totalPrice.toFixed(2) : '0.00';

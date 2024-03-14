@@ -1,5 +1,6 @@
-import React from 'react';
-import '../index.css';
+import React from 'react'
+import '../index.css'
+import '../css/books.css'
 
 export default function Books ( { id, title, author, price, imageUrl, addToCart } ) {
     const handleBorrow = () => {

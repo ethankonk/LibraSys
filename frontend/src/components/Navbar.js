@@ -1,5 +1,6 @@
 import React from 'react'
 import '../index.css'
+import '../css/navbar.css'
 import logo from '../images/logo.png'
 import { FaRegUser } from "react-icons/fa"
 import { Link } from 'react-router-dom'

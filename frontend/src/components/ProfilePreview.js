@@ -1,6 +1,7 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import '../index.css';
+import React from 'react'
+import { motion } from 'framer-motion'
+import '../index.css'
+import '../css/profile-preview.css'
 
 const ProfilePreview = ({ user, toggleProfile }) => {
     return (

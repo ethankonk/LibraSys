@@ -1,0 +1,65 @@
+/* Navbar */
+
+.top-navbar {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    padding: 20px 0px 20px 0px;
+  }
+  
+  .transparent{
+    background-color: transparent;
+  }
+  
+  .black {
+    background-color: black;
+  }
+  
+  .website-name {
+    font-size: 1.5em;
+  }
+  
+  .logo-container {
+    display: flex;
+    justify-content: space-between;
+    width: 7%;
+    padding-left: 60px;
+    align-items: center;
+  }
+  
+  .logo {
+    max-width: 70px;
+    height: 100%;
+    border-radius: 10px;
+  }
+  
+  .checkout-cart {
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    padding-right: 60px;
+  }
+  
+  .profile-button {
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    margin-right: 30px;
+    color: white;
+    padding: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .profile-button:hover {
+    background-color: rgba(181, 181, 181, 0.3);
+  }
+  
+  .profile {
+    width: 75%;
+    height: 75%;
+  }
