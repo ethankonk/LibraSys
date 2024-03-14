@@ -1,0 +1,24 @@
+  /* Footer */
+  
+  .footer-container {
+    display: grid;
+    background-color: #1c1c1c; /* Footer background color */
+    color: #fff; /* Text color */
+    padding: 160px 0;
+    text-align: center;
+  }
+  
+  .footer-links a {
+    color: #fff; /* Link color */
+    text-decoration: none;
+    margin: 0 10px; /* Adjust spacing between links */
+  }
+  
+  .footer-links a:hover {
+    text-decoration: underline;
+  }
+  
+  .footer-text {
+    margin-top: 10px;
+    font-size: 0.8em; /* Adjust text size as needed */
+  }

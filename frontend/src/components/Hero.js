@@ -1,5 +1,5 @@
 import React from 'react'
-import StarsCanvas from './StarsCanvas';
+import '../css/hero.css'
 
 export default function Hero () {
     return (

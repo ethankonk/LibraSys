@@ -1,27 +1,30 @@
-import React from 'react';
-import '../index.css';
+import React from 'react'
+import { motion } from 'framer-motion'
+import '../index.css'
+import '../css/profile-preview.css'
 
-const ProfilePreview = ({ user, isLoggedIn, onClose }) => {
+const ProfilePreview = ({ user, toggleProfile }) => {
     return (
         <div>
-            {isLoggedIn ? 
-            <div className='profile-preview'>
-                <div className='user-info'>
-                    <img src={require(`../images/${user.profilePicture}`)} className='profile-picture' />
-                    <div>
-                        <h2 className='user-name'>{user.name}</h2>
-                        <p className='user-email'>{user.email}</p>
+            <div className='profile-overlay' onClick={()=>toggleProfile()}></div>
+            <div className='profile-container'>
+                <motion.div
+                initial={{opacity: 0, y: '-17vh'}}
+                animate={{opacity: 1, y: '-13vh'}}
+                transition={{duration: 0.2, ease: "easeIn"}}
+                >
+                    <div className='profile-preview'>
+                        <div className='user-info'>
+                            <img src={require(`../images/${user.profilePicture}`)} className='profile-picture' />
+                            <div>
+                                <h2 className='user-name'>{user.name}</h2>
+                                <p className='user-email'>{user.email}</p>
+                            </div>
+                        </div>
+                        <button className='button secondary signout-button'>Sign Out</button>
                     </div>
-                </div>
-                <button className='button signout-button'>Sign Out</button>
+                </motion.div>
             </div>
-            : 
-            <div>
-                <h2>Not logged in? Login!</h2>
-                <button>Login</button>
-                <p>or</p>
-                <button>Sign Up</button>
-            </div>}
         </div>
       );
 }

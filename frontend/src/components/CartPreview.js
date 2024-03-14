@@ -2,6 +2,7 @@ import React from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import '../index.css';
+import '../css/cart-preview.css'
 
 const CartButton = ({ totalPrice }) => {
   const formattedPrice = typeof totalPrice === 'number' ? totalPrice.toFixed(2) : '0.00';
@@ -15,7 +16,7 @@ export default function CartPreview({ isOpen, onClose, cartItems }) {
     <div>
       <motion.div
         className={'shopping-cart-preview'}
-        initial={{ x: 0 }} 
+        initial={{ x: '100%' }} 
         animate={{ x: isOpen ? 0 : '100%' }}
         transition={{ type: 'spring', stiffness: 200, damping: 25, duration: 0.1 }}
       >
