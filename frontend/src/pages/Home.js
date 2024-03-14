@@ -43,7 +43,15 @@ export default function Home ({ booksData }) {
     return (
         <div>
             <CartPreview onClose={toggleCart} isOpen={cartIsOpen} cartItems={booksData} />
-            <Navbar background={'transparent'} cart={cartCount} inCart={borrowedBooks} toggleProfile={toggleProfile} isLoggedIn={true} toggleCart={toggleCart} />
+            <Navbar 
+                background={'transparent'} 
+                cart={cartCount} 
+                inCart={borrowedBooks} 
+                toggleProfile={toggleProfile} 
+                isLoggedIn={false} 
+                toggleCart={toggleCart}
+                buttons={true}
+            />
             {profileIsOpen && <ProfilePreview user={testUser} toggleProfile={toggleProfile} isOpen={true} />}
             <Hero />
             <StarsCanvas />

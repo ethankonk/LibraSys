@@ -334,6 +334,36 @@ ul {
   background-color: transparent;
 }
 
+/* Login Page */
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: calc(100vh - 14vh);
+  background-color: rgba(0, 0, 0, 0); /* Transparent background */
+}
+
+.login-box {
+  background-color: #ffffff; /* White background for login box */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a bit of depth */
+  height: 50vh;
+}
+
+input {
+  width: 90%;
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
 /* Buttons */
 
 .button {
@@ -384,6 +414,10 @@ ul {
 
 .login:hover {
   background-color: rgba(255, 255, 255, 0.255);
+}
+
+.login2 {
+  width: 90%;
 }
 
 .cart {
