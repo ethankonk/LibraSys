@@ -1,7 +1,8 @@
-import React from 'react';
-import { FaTimes } from 'react-icons/fa';
-import { motion } from 'framer-motion';
-import '../index.css';
+import React from 'react'
+import { FaTimes } from 'react-icons/fa'
+import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
+import '../index.css'
 import '../css/cart-preview.css'
 
 const CartButton = ({ totalPrice }) => {
@@ -42,7 +43,7 @@ export default function CartPreview({ isOpen, onClose, cartItems }) {
           </ul>
         </div>
         <div className='cart-button'>
-          <CartButton totalPrice={totalPrice} />
+        <Link to='/CartPage'><CartButton totalPrice={totalPrice} /></Link>
         </div>
       </motion.div>
       {isOpen && <motion.div

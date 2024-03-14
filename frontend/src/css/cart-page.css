@@ -1,0 +1,19 @@
+.cart-container {
+    display: flex;
+    flex-direction: column;
+    padding: 80px;
+    text-align: left;
+}
+  
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
+.cart-box {
+    display: grid;
+    grid-template-columns: 2fr 1fr; 
+    grid-gap: 20px;
+    width: 100%;
+}
