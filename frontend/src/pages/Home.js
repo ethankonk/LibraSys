@@ -10,7 +10,7 @@ import ScrollToTop from '../components/ScrollToTop';
 import '../index.css'
 import '../css/books.css'
 
-export default function Home () {
+export default function Home ({ setLoggedIn, loggedIn, profile }) {
 
     const [borrowedBooks, setBorrowedBooks] = useState([])
     const [cartCount, setCartCount] = useState(0)
@@ -43,11 +43,6 @@ export default function Home () {
       setCartCount(cartCount+1)
     }
   
-    const clearCart = () => {
-      setBorrowedBooks([])
-      setCartCount(0)
-    }
-  
     const toggleCart = () => {
       setCartIsOpen(!cartIsOpen)
     }
@@ -57,7 +52,7 @@ export default function Home () {
     }
 
     const testUser = {
-        name: "John Doe",
+        username: "John Doe",
         email: "john.doe@example.com",
         profilePicture: "profile-picture.jpeg"
     };
@@ -69,13 +64,13 @@ export default function Home () {
             <Navbar 
                 background={'transparent'} 
                 cart={cartCount} 
-                inCart={borrowedBooks} 
+                inCart={borrowedBooks}
                 toggleProfile={toggleProfile} 
-                isLoggedIn={false} 
+                isLoggedIn={loggedIn} 
                 toggleCart={toggleCart}
                 buttons={true}
             />
-            {profileIsOpen && <ProfilePreview user={testUser} toggleProfile={toggleProfile} isOpen={true} />}
+            {profileIsOpen && <ProfilePreview user={profile} toggleProfile={toggleProfile} setLoggedIn={setLoggedIn} />}
             <Hero />
             <StarsCanvas />
             <div className='book-section'>

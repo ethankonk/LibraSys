@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
 import Home from '../pages/Home'
@@ -7,11 +7,18 @@ import LoginPage from '../pages/LoginPage'
 import CartPage from '../pages/CartPage'
 
 export default function Main () {
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [profile, setProfile] = useState({
+    username: "",
+    email: "",
+    profilePicture: "profile-picture.jpeg"
+  })
+
   return (
     <Routes>
-        <Route exact path='/' element={<Home />}></Route>
+        <Route index element={<Home loggedIn={loggedIn} setLoggedIn={setLoggedIn} profile={profile} />}></Route>
         <Route exact path='/BookPage' element={<BookPage />}></Route>
-        <Route exact path='/LoginPage' element={<LoginPage />}></Route>
+        <Route exact path='/LoginPage' element={<LoginPage setLoggedIn={setLoggedIn} setProfile={setProfile} />}></Route>
         <Route exact path='/CartPage' element={<CartPage />}></Route>
     </Routes>
   );

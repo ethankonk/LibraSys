@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
+    width: 100%;
     height: calc(100vh - 14vh);
     background-color: rgba(0, 0, 0, 0); /* Transparent background */
   }
@@ -33,3 +33,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
   }
+
+.error-message {
+  color: red;
+}

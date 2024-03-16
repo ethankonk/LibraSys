@@ -3,7 +3,12 @@ import { motion } from 'framer-motion'
 import '../index.css'
 import '../css/profile-preview.css'
 
-const ProfilePreview = ({ user, toggleProfile }) => {
+const ProfilePreview = ({ user, toggleProfile, setLoggedIn }) => {
+    const handleSignout = () => {
+        setLoggedIn(false)
+        toggleProfile()
+    }
+
     return (
         <div>
             <div className='profile-overlay' onClick={()=>toggleProfile()}></div>
@@ -17,11 +22,11 @@ const ProfilePreview = ({ user, toggleProfile }) => {
                         <div className='user-info'>
                             <img src={require(`../images/${user.profilePicture}`)} className='profile-picture' />
                             <div>
-                                <h2 className='user-name'>{user.name}</h2>
+                                <h2 className='user-name'>{user.username}</h2>
                                 <p className='user-email'>{user.email}</p>
                             </div>
                         </div>
-                        <button className='button secondary signout-button'>Sign Out</button>
+                        <button className='button secondary signout-button' onClick={handleSignout} >Sign Out</button>
                     </div>
                 </motion.div>
             </div>
