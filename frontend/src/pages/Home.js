@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 import StarsCanvas from '../components/StarsCanvas';
 import Hero from '../components/Hero';
@@ -10,38 +10,10 @@ import ScrollToTop from '../components/ScrollToTop';
 import '../index.css'
 import '../css/books.css'
 
-export default function Home ({ setLoggedIn, loggedIn, profile }) {
+export default function Home ({ setLoggedIn, loggedIn, profile, borrowedBooks, booksData, setCartCount, setBorrowedBooks, cartCount }) {
 
-    const [borrowedBooks, setBorrowedBooks] = useState([])
-    const [cartCount, setCartCount] = useState(0)
     const [cartIsOpen, setCartIsOpen] = useState(false)
     const [profileIsOpen, setProfileIsOpen] = useState(false)
-    const [booksData, setBooksData] = useState([])
-
-    useEffect(() => {
-      // Fetch books data from PHP file
-      fetch('https://konkoloe.myweb.cs.uwindsor.ca/COMP-3077-W24/assignments/finalproject/backend/fetchBooks.php')
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Failed to fetch books data');
-          }
-          console.log("Fetched Response");
-          return response.json();
-        })
-        .then(data => {
-          setBooksData(data);
-        })
-        .catch(error => {
-          console.error("Error fetching books data:", error);
-        });
-    }, []);
-
-    const addToCart = (id) => {
-      setBorrowedBooks(prevBorrowedBooks => {
-        return [...prevBorrowedBooks, id]
-      })
-      setCartCount(cartCount+1)
-    }
   
     const toggleCart = () => {
       setCartIsOpen(!cartIsOpen)
@@ -49,6 +21,13 @@ export default function Home ({ setLoggedIn, loggedIn, profile }) {
    
     const toggleProfile = () => {
       setProfileIsOpen(!profileIsOpen)
+    }
+
+    const addToCart = (id) => {
+      setBorrowedBooks(prevBorrowedBooks => {
+        return [...prevBorrowedBooks, id]
+      })
+      setCartCount(cartCount+1)
     }
 
     const testUser = {
