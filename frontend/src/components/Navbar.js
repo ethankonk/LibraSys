@@ -6,10 +6,11 @@ import { FaRegUser } from "react-icons/fa"
 import { Link, useNavigate } from 'react-router-dom'
 
 export default function Navbar ({ cart, inCart, toggleCart, toggleProfile, isLoggedIn, background, buttons }) {
-  const navgiate = useNavigate()
+  const navigate = useNavigate()
 
   const handleMenuClick = () => {
       console.log(inCart)
+      navigate('/')
   }
 
   return (
