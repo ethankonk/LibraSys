@@ -26,7 +26,7 @@ if ($result->num_rows > 0) {
             'title' => $row['title'],
             'author' => $row['author'],
             'price' => $price,
-            'imageUrl' => $row['image']
+            'imageUrl' => $row['imageUrl']
         );
     }
 }

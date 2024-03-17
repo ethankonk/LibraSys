@@ -30,6 +30,20 @@ export default function Home ({ setLoggedIn, loggedIn, profile, borrowedBooks, b
       setCartCount(cartCount+1)
     }
 
+    const removeFromCart = (id) => {
+      setBorrowedBooks(prevBorrowedBooks => {
+        const newBorrowedBooks = []
+        for(let i = 0; i < prevBorrowedBooks.length; i++){
+          const currentBorrowedBook = prevBorrowedBooks[i]
+          if (!(currentBorrowedBook === id)){
+            newBorrowedBooks.push(currentBorrowedBook)
+          }
+        }
+        return newBorrowedBooks
+      })
+      setCartCount(cartCount-1)
+    }
+
     const testUser = {
         username: "John Doe",
         email: "john.doe@example.com",
@@ -39,7 +53,7 @@ export default function Home ({ setLoggedIn, loggedIn, profile, borrowedBooks, b
     return (
         <div>
             <ScrollToTop />
-            <CartPreview onClose={toggleCart} isOpen={cartIsOpen} cartItems={booksData} />
+            <CartPreview onClose={toggleCart} isOpen={cartIsOpen} cartItems={borrowedBooks} handleDelete={removeFromCart} />
             <Navbar 
                 background={'transparent'} 
                 cart={cartCount} 

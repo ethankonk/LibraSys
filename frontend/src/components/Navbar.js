@@ -16,7 +16,7 @@ export default function Navbar ({ cart, inCart, toggleCart, toggleProfile, isLog
   return (
       <div className={`top-navbar ${background}`}>
         <div className="logo-container">
-          <img className="logo" src={ logo } />
+          <button className='home-button' onClick={handleMenuClick}><img className="logo" src={ logo } /></button>
         </div>  
         <div className="checkout-cart">
           { buttons && (isLoggedIn ? 
