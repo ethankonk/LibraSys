@@ -35,6 +35,27 @@ export default function Main () {
       });
   }, []);
 
+  const addToCart = (id) => {
+    setBorrowedBooks(prevBorrowedBooks => {
+      return [...prevBorrowedBooks, id]
+    })
+    setCartCount(cartCount+1)
+  }
+
+  const removeFromCart = (id) => {
+    setBorrowedBooks(prevBorrowedBooks => {
+      const newBorrowedBooks = []
+      for(let i = 0; i < prevBorrowedBooks.length; i++){
+        const currentBorrowedBook = prevBorrowedBooks[i]
+        if (!(currentBorrowedBook === id)){
+          newBorrowedBooks.push(currentBorrowedBook)
+        }
+      }
+      return newBorrowedBooks
+    })
+    setCartCount(cartCount-1)
+  }
+
   return (
     <Routes>
         <Route index element={<Home 
@@ -43,14 +64,19 @@ export default function Main () {
           profile={profile} 
           borrowedBooks={borrowedBooks} 
           booksData={booksData} 
-          setCartCount={setCartCount} 
           cartCount={cartCount}
-          setBorrowedBooks={setBorrowedBooks}
+          addToCart={addToCart}
+          removeFromCart={removeFromCart}
           />}>
         </Route>
         <Route exact path='/BookPage' element={<BookPage />}></Route>
         <Route exact path='/LoginPage' element={<LoginPage setLoggedIn={setLoggedIn} setProfile={setProfile} />}></Route>
-        <Route exact path='/CartPage' element={<CartPage />}></Route>
+        <Route exact path='/CartPage' element={<CartPage 
+          borrowedBookIds={borrowedBooks} 
+          addToCart={addToCart}
+          removeFromCart={removeFromCart}
+          />}>
+        </Route>
     </Routes>
   );
 }

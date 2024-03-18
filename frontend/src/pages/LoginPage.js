@@ -84,6 +84,7 @@ export default function LoginPage({ setProfile, setLoggedIn }) {
   };
 
   const toggleAuthMethod = () => {
+    setErrorMessage('')
     setAuthMethod((method) => {
         if (method === 'login') {
             return 'signup'
@@ -98,11 +99,11 @@ export default function LoginPage({ setProfile, setLoggedIn }) {
     <div>
         <StarsCanvas />
         <Navbar background='transparent' buttons={false} />
-        {errorMessage && <div className="error-message">{errorMessage}</div>}
         {authMethod === 'login' ?
             <Login 
                 email={email} 
-                password={password} 
+                password={password}
+                errorMessage={errorMessage} 
                 setEmail={setEmail} 
                 setPassword={setPassword}
                 handleLogin={handleLogin}
@@ -114,6 +115,7 @@ export default function LoginPage({ setProfile, setLoggedIn }) {
                 username={username} 
                 password={password} 
                 confirmPassword={confirmPassword}
+                errorMessage={errorMessage}
                 setEmail={setEmail} 
                 setUsername={setUsername}
                 setPassword={setPassword}

@@ -17,3 +17,35 @@
     grid-gap: 20px;
     width: 100%;
 }
+
+.payment-container {
+    border: 1px solid rgb(185, 185, 185);
+    background-color: rgb(234, 234, 234);
+    padding: 20px;
+    max-height: 272px;
+}
+
+.payment-container h2 {
+    margin-top: 0;
+}
+
+.payment-box {
+    border-bottom: 1px solid rgb(196, 196, 196);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.payment-numbers {
+    text-align: right;
+}
+
+.checkout {
+    margin-top: 20px;
+    width: 90%;
+}
+
+.checkout-button-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}

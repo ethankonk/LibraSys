@@ -10,7 +10,7 @@ import ScrollToTop from '../components/ScrollToTop';
 import '../index.css'
 import '../css/books.css'
 
-export default function Home ({ setLoggedIn, loggedIn, profile, borrowedBooks, booksData, setCartCount, setBorrowedBooks, cartCount }) {
+export default function Home ({ setLoggedIn, loggedIn, profile, borrowedBooks, booksData, removeFromCart, addToCart, cartCount }) {
 
     const [cartIsOpen, setCartIsOpen] = useState(false)
     const [profileIsOpen, setProfileIsOpen] = useState(false)
@@ -21,27 +21,6 @@ export default function Home ({ setLoggedIn, loggedIn, profile, borrowedBooks, b
    
     const toggleProfile = () => {
       setProfileIsOpen(!profileIsOpen)
-    }
-
-    const addToCart = (id) => {
-      setBorrowedBooks(prevBorrowedBooks => {
-        return [...prevBorrowedBooks, id]
-      })
-      setCartCount(cartCount+1)
-    }
-
-    const removeFromCart = (id) => {
-      setBorrowedBooks(prevBorrowedBooks => {
-        const newBorrowedBooks = []
-        for(let i = 0; i < prevBorrowedBooks.length; i++){
-          const currentBorrowedBook = prevBorrowedBooks[i]
-          if (!(currentBorrowedBook === id)){
-            newBorrowedBooks.push(currentBorrowedBook)
-          }
-        }
-        return newBorrowedBooks
-      })
-      setCartCount(cartCount-1)
     }
 
     const testUser = {

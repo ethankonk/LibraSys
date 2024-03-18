@@ -1,6 +1,6 @@
 import '../index.css'
 
-export default function SignUp ({ setEmail, setPassword, setUsername, handleSignUp, email, password, username, toggleAuthMethod }) {
+export default function SignUp ({ setEmail, setPassword, setUsername, handleSignUp, email, password, username, toggleAuthMethod, errorMessage }) {
     
     return (
         <div className="login-page">
@@ -24,6 +24,7 @@ export default function SignUp ({ setEmail, setPassword, setUsername, handleSign
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 />
+                {errorMessage && <div className='error-message'><p>{errorMessage}</p></div>}
                 <button className='button primary login2' onClick={()=>handleSignUp()}>Sign Up</button>
                 <p>Already have an account?</p>
                 <button className='button secondary signup' onClick={()=>toggleAuthMethod()}>Login</button>

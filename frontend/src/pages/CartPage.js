@@ -1,40 +1,47 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import '../css/cart-page.css'
 
 import CartItem from '../components/CartItem'
 import Navbar from '../components/Navbar'
 // import PaymentComponent from '../components/Payment';
 
-export default function CartPage () {
-  const totalPrice = 100.00;
-  const subtotal = totalPrice;
-  const discount = 0;
-  const total = subtotal - discount
+export default function CartPage ({ borrowedBookIds, removeFromCart }) {
+  const [booksData, setBooksData] = useState([])
+  const discount = 0.00;
+
+  useEffect(() => {
+    if(borrowedBookIds.length > 0){
+      fetch('https://konkoloe.myweb.cs.uwindsor.ca/COMP-3077-W24/assignments/finalproject/backend/fetchBorrowedBooks.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(borrowedBookIds), 
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Failed to fetch books data');
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log(data)
+          setBooksData(data);
+        })
+        .catch(error => {
+          console.error('Error fetching books data:', error);
+        });
+    } else {
+        setBooksData([])
+    }
+  }, [borrowedBookIds]); 
 
   const handleCheckout = () => {
     console.log('Checkout clicked')
   };
 
-  const cartItems = [
-    {
-      id: 1,
-      title: 'Book 1',
-      imageUrl: 'book_cover.jpeg',
-      price: 20.00,
-    },
-    {
-      id: 2,
-      title: 'Book 2',
-      imageUrl: 'book_cover.jpeg',
-      price: 30.00,
-    },
-    {
-      id: 3,
-      title: 'Book 3',
-      imageUrl: 'book_cover.jpeg',
-      price: 25.00,
-    },
-  ]
+  const subtotal = booksData.reduce((total, book) => total + book.price, 0);
+  const total = subtotal-discount
 
   return (
     <div>
@@ -43,18 +50,31 @@ export default function CartPage () {
         <h1>Your Cart</h1>
           <div className='cart-box'>
             <div className="cart-items">
-              {cartItems.map(item => (
+              {booksData.map(book => (
                 <CartItem 
-                  key={item.id} 
-                  item={item} 
+                  key={book.id} 
+                  item={book} 
+                  removeFromCart={removeFromCart}
                 />
               ))}
             </div>
-            <div>
-              <p>Payment</p>
-              {/* <PaymentComponent subtotal={subtotal} discount={discount} total={total} /> */}
-              <hr />
-              <button onClick={handleCheckout}>Checkout - ${total.toFixed(2)} CAD</button>
+            <div className='payment-container'>
+              <h2>Payment</h2>
+              <div className='payment-box'>
+                <div className='payment-titles'>
+                  <p>Subtotal</p>
+                  <p>Discount</p>
+                  <p><strong>Total</strong></p>
+                </div>
+                <div className='payment-numbers'>
+                  <p>{`\$${subtotal.toFixed(2)}`}</p>
+                  <p>{`\$${discount.toFixed(2)}`}</p>
+                  <p><strong>{`\$${total.toFixed(2)}`}</strong></p>
+                </div>
+              </div>
+              <div className='checkout-button-container'>
+                <button className='button primary checkout' onClick={handleCheckout}>Checkout - ${total.toFixed(2)} CAD</button>
+              </div>
             </div>
           </div>
       </div>
