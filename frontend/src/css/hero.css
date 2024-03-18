@@ -1,18 +1,24 @@
 /* Hero */
 
 .hero-banner {
-    background-color: transparent;
-    width: 100%;
-    height: calc(100vh - 25vh);
-    color: #e0e0e0;
-    padding-top: 15vh; 
-    text-align: center;
+  background-color: transparent;
+  width: 100%;
+  height: calc(100vh - 25vh);
+  color: #e0e0e0;
+  padding-top: 15vh; 
+  text-align: center;
+}
+
+.hero-banner h1 {
+  font-size: 6em;
+}
+
+.hero-banner p {
+  font-size: 2.4em;
+}
+
+@media (max-height: 800px) {
+  .hero-banner {
+    height: 600px;
   }
-  
-  .hero-banner h1 {
-    font-size: 6em;
-  }
-  
-  .hero-banner p {
-    font-size: 2.4em;
-  }
+}

@@ -19,7 +19,7 @@
     height: 100%;
     backdrop-filter: blur(4px);
     z-index: 9999;
-    background-color: rgba(0, 0, 0, 0.5); /* Added a background color with opacity for better readability */
+    background-color: rgba(0, 0, 0, 0.5);
   }
   
   .cart-content {
@@ -30,7 +30,7 @@
   .header {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Centered header content vertically */
+    align-items: center; 
     padding: 10px 20px;
     border-bottom: 1px solid #ccc;
   }
