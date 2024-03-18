@@ -10,4 +10,10 @@
     z-index: -1;
     background-color: #000000;
     position: absolute;
+}
+
+@media (max-height: 800px) {
+  .canvas {
+    min-height: 800px;
   }
+}
