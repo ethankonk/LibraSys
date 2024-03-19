@@ -5,6 +5,7 @@ import Home from '../pages/Home'
 import BookPage from '../pages/BookPage'
 import LoginPage from '../pages/LoginPage'
 import CartPage from '../pages/CartPage'
+import AdminPage from '../pages/AdminPage'
 
 export default function Main () {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -16,6 +17,7 @@ export default function Main () {
   const [booksData, setBooksData] = useState([])
   const [borrowedBooks, setBorrowedBooks] = useState([])
   const [cartCount, setCartCount] = useState(0)
+  const [bookAdded, setBookAdded] = useState(0)
 
   useEffect(() => {
     // Fetch books data from PHP file
@@ -33,7 +35,7 @@ export default function Main () {
       .catch(error => {
         console.error("Error fetching books data:", error);
       });
-  }, []);
+  }, [bookAdded]);
 
   const addToCart = (id) => {
     setBorrowedBooks(prevBorrowedBooks => {
@@ -77,6 +79,7 @@ export default function Main () {
           removeFromCart={removeFromCart}
           />}>
         </Route>
+        <Route exact path='/Admin' element={<AdminPage setBookAdded={setBookAdded} />}></Route>
     </Routes>
   );
 }
