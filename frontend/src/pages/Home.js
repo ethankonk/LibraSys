@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 import StarsCanvas from '../components/StarsCanvas';
 import Hero from '../components/Hero';
@@ -14,6 +15,11 @@ export default function Home ({ setLoggedIn, loggedIn, profile, borrowedBooks, b
 
     const [cartIsOpen, setCartIsOpen] = useState(false)
     const [profileIsOpen, setProfileIsOpen] = useState(false)
+    const navigate = useNavigate()
+
+    const handleEditButtonClick = () => {
+        navigate('/Admin')
+    }
   
     const toggleCart = () => {
       setCartIsOpen(!cartIsOpen)
@@ -22,12 +28,6 @@ export default function Home ({ setLoggedIn, loggedIn, profile, borrowedBooks, b
     const toggleProfile = () => {
       setProfileIsOpen(!profileIsOpen)
     }
-
-    const testUser = {
-        username: "John Doe",
-        email: "john.doe@example.com",
-        profilePicture: "profile-picture.jpeg"
-    };
 
     return (
         <div>
@@ -46,7 +46,10 @@ export default function Home ({ setLoggedIn, loggedIn, profile, borrowedBooks, b
             <Hero />
             <StarsCanvas />
             <div className='book-section'>
-              <h1>Books</h1>
+              <div className='book-header'>
+                <h1>Books</h1>
+                {loggedIn && profile.permission == 'admin' && <button className='button secondary edit-button' onClick={handleEditButtonClick}>Edit Books</button>}
+              </div>
               <div className= "book-container"> 
                   {booksData.map(book => (
                   <Books
@@ -58,6 +61,7 @@ export default function Home ({ setLoggedIn, loggedIn, profile, borrowedBooks, b
                       imageUrl={book.imageUrl}
                       cart={cartCount}
                       addToCart={addToCart}
+                      admin={false}
                   />
                   ))}
               </div>

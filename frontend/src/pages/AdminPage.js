@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState } from 'react'
 
-import Navbar from '../components/Navbar';
+import Navbar from '../components/Navbar'
+import Books from '../components/Books'
 import '../css/admin-page.css'
 import '../index.css'
 
-export default function AdminPage({ setBookAdded }) {
+export default function AdminPage({ setBookAdded, booksData, cartCount, addToCart }) {
     const [formData, setFormData] = useState({
         title: '',
         author: '',
@@ -51,6 +52,27 @@ export default function AdminPage({ setBookAdded }) {
         }
     };
 
+    function deleteBook(title) {
+        console.log(title)
+        fetch('https://konkoloe.myweb.cs.uwindsor.ca/COMP-3077-W24/assignments/finalproject/backend/deleteBook.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ title: title }),
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log('Book deleted successfully');
+            }
+            throw new Error('Failed to delete book');
+        })
+        .catch(error => {
+            console.error('Error deleting book:', error);
+            // Handle error
+        });
+    }
+
     return (
         <div>
             <Navbar background='black' buttons={false} />
@@ -72,6 +94,22 @@ export default function AdminPage({ setBookAdded }) {
                     </form>
                 </div>
             </div>
+            <div className= "book-container"> 
+                  {booksData.map(book => (
+                  <Books
+                      key={book.id}
+                      id={book.id}
+                      title={book.title}
+                      author={book.author}
+                      price={book.price}
+                      imageUrl={book.imageUrl}
+                      cart={cartCount}
+                      addToCart={addToCart}
+                      deleteBook = {deleteBook}
+                      admin={true}
+                  />
+                  ))}
+              </div>
         </div>
     );
 }

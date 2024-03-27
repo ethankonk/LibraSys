@@ -12,7 +12,8 @@ export default function Main () {
   const [profile, setProfile] = useState({
     username: "",
     email: "",
-    profilePicture: "profile-picture.jpeg"
+    profilePicture: "profile-picture.jpeg",
+    permission: ''
   })
   const [booksData, setBooksData] = useState([])
   const [borrowedBooks, setBorrowedBooks] = useState([])
@@ -79,7 +80,12 @@ export default function Main () {
           removeFromCart={removeFromCart}
           />}>
         </Route>
-        <Route exact path='/Admin' element={<AdminPage setBookAdded={setBookAdded} />}></Route>
+        <Route exact path='/Admin' element={<AdminPage 
+          setBookAdded={setBookAdded}
+          booksData={booksData} 
+          cartCount={cartCount}
+          addToCart={addToCart} 
+        />}></Route>
     </Routes>
   );
 }

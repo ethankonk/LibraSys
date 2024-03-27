@@ -12,13 +12,16 @@ export default function LoginPage({ setProfile, setLoggedIn }) {
   const [email, setEmail] = useState('')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [permission, setPermission] = useState('user')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [authMethod, setAuthMethod] = useState('login')
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('')
+  
   
   const navigate = useNavigate();
 
   const handleLogin = () => {
+    setErrorMessage('')
     fetch('https://konkoloe.myweb.cs.uwindsor.ca/COMP-3077-W24/assignments/finalproject/backend/authentication.php', {
       method: 'POST',
       headers: {
@@ -37,6 +40,7 @@ export default function LoginPage({ setProfile, setLoggedIn }) {
           ...prevProfile,
           username: data.username,
           email: email,
+          permission: data.permission,
         }))
         setLoggedIn(true)
         setErrorMessage('');
@@ -51,6 +55,7 @@ export default function LoginPage({ setProfile, setLoggedIn }) {
   };
 
   const handleSignUp = () => {
+    setErrorMessage('')
     fetch('https://konkoloe.myweb.cs.uwindsor.ca/COMP-3077-W24/assignments/finalproject/backend/authentication.php', {
       method: 'POST',
       headers: {
@@ -60,6 +65,7 @@ export default function LoginPage({ setProfile, setLoggedIn }) {
         email,
         username,
         password,
+        permission,
         signup: true,
       }),
     })
@@ -70,12 +76,13 @@ export default function LoginPage({ setProfile, setLoggedIn }) {
           ...prevProfile,
           username: username,
           email: email,
+          permission: permission,
         }))
         setLoggedIn(true)
         setErrorMessage('');
         navigate("/")
       } else {
-        setErrorMessage('Email Already in use. Please try again.');
+        setErrorMessage("Email already in use.");
       }
     })
     .catch(error => {
@@ -93,6 +100,10 @@ export default function LoginPage({ setProfile, setLoggedIn }) {
             return 'login'
         }
     })
+  }
+
+  const handleCheckboxChange = () => {
+    setPermission(oldPerms => (oldPerms == 'user' ? 'admin' : 'user'))
   }
 
   return (
@@ -114,6 +125,7 @@ export default function LoginPage({ setProfile, setLoggedIn }) {
                 email={email}
                 username={username} 
                 password={password} 
+                permission={permission}
                 confirmPassword={confirmPassword}
                 errorMessage={errorMessage}
                 setEmail={setEmail} 
@@ -122,6 +134,7 @@ export default function LoginPage({ setProfile, setLoggedIn }) {
                 setConfirmPassword={setConfirmPassword}
                 handleSignUp={handleSignUp}
                 toggleAuthMethod={toggleAuthMethod}
+                handleCheckboxChange={handleCheckboxChange}
             />
         }
     </div>

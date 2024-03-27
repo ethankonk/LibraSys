@@ -1,0 +1,16 @@
+.checkbox-container {
+    display: flex;
+    padding: 10px 15px
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: left;
+    margin-top: 10px;
+}
+
+.admin-checkbox {
+    display: flex;
+    width: auto;
+    margin: 15px;
+}

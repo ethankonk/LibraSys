@@ -70,3 +70,16 @@
   .borrow-button:hover {
     background-color: #B99470;
   }
+
+  .book-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+    grid-gap: 70%; 
+  }
+
+  .edit-button {
+    align-self: center;
+    width: 125px;
+    height: 45px;
+  }
