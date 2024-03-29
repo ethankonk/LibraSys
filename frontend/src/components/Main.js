@@ -6,6 +6,7 @@ import BookPage from '../pages/BookPage'
 import LoginPage from '../pages/LoginPage'
 import CartPage from '../pages/CartPage'
 import AdminPage from '../pages/AdminPage'
+import ContactPage from '../pages/ContactPage'
 
 export default function Main () {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -123,6 +124,7 @@ export default function Main () {
           addToCart={addToCart} 
           setBookRemoved={setBookRemoved}
         />}></Route>
+        <Route exact path='/Contact' element={<ContactPage />}></Route>
     </Routes>
   );
 }

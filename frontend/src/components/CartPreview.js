@@ -61,7 +61,7 @@ export default function CartPreview({ isOpen, onClose, cartItems, handleDelete }
             {booksData.map((book) => (
               <li key={book.id}>
                 <div className="item-details">
-                  <img src={require(`../images/covers/${book.imageUrl}`)} alt="Book Cover" />
+                  <img src={`/COMP-3077-W24/assignments/finalproject/build/static/media/${book.imageUrl}`} alt="Book Cover" />
                   <div className="items">
                     <p>{book.title}</p>
                     <p>${book.price}</p>

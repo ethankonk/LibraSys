@@ -7,7 +7,7 @@ export default function CartItem ({ item, removeFromCart  }) {
 
   return (
     <div className="cart-item">
-      <img src={require(`../images/covers/${imageUrl}`)} alt="Item" className="item-image" />
+      <img src={`/COMP-3077-W24/assignments/finalproject/build/static/media/${imageUrl}`} alt="Item" className="item-image" />
 
         <div className='item-box'>
 

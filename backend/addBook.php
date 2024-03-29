@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $isbn = $_POST['isbn'];
 
     // Upload cover image
-    $targetDir = __DIR__ . "./../build/static/media/";
+    $targetDir = __DIR__ . "/../build/static/media/";
     $targetFile = $targetDir . basename($_FILES["coverImage"]["name"]);
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));

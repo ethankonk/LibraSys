@@ -8,8 +8,7 @@ export default function Footer () {
           <div className="footer-links">
             <Link to='/'>Home</Link>
             <Link to='/Admin'>Admin</Link>
-            <a href="#">FAQs</a>
-            <a href="#">Contact</a>
+            <Link to='/Contact'>Contact</Link>
           </div>
           <p className="footer-text">© 2024 Library System. All Rights Reserved.</p>
         </div>

@@ -16,13 +16,19 @@ export default function Home ({ setLoggedIn, loggedIn, profile, borrowedBooks, b
 
     const [cartIsOpen, setCartIsOpen] = useState(false)
     const [profileIsOpen, setProfileIsOpen] = useState(false)
-    const [openAlert, setOpenAlert] = useState(false)
+    const [openCheckoutAlert, setOpenCheckoutAlert] = useState(false)
+    const [openBorrowAlert, setOpenBorrowAlert] = useState(false)
     const navigate = useNavigate()
 
     const handleEditButtonClick = () => {
         navigate('/Admin')
     }
-  
+    
+    const handleBorrow = (id) => {
+      addToCart(id)
+      setOpenBorrowAlert(true)
+    }
+
     const toggleCart = () => {
       setCartIsOpen(!cartIsOpen)
     }
@@ -33,16 +39,17 @@ export default function Home ({ setLoggedIn, loggedIn, profile, borrowedBooks, b
 
     useEffect(()=>{
       if (checkedOut === true){
-        setOpenAlert(true)
+        setOpenCheckoutAlert(true)
       } else {
-        setOpenAlert(false)
+        setOpenCheckoutAlert(false)
       }
     }, [checkedOut])
 
     return (
         <div>
             <ScrollToTop />
-            <SimpleAlert text='Successfully Purchased Items.' open={openAlert} setOpen={setOpenAlert} />
+            <SimpleAlert text='Successfully Purchased Items.' open={openCheckoutAlert} setOpen={setOpenCheckoutAlert} type='checkout' />
+            <SimpleAlert text='Added to Cart!' open={openBorrowAlert} setOpen={setOpenBorrowAlert} type='borrow' />
             <CartPreview onClose={toggleCart} isOpen={cartIsOpen} cartItems={borrowedBooks} handleDelete={removeFromCart} />
             <Navbar 
                 background={'transparent'} 
@@ -71,7 +78,7 @@ export default function Home ({ setLoggedIn, loggedIn, profile, borrowedBooks, b
                       price={book.price}
                       imageUrl={book.imageUrl}
                       cart={cartCount}
-                      addToCart={addToCart}
+                      addToCart={handleBorrow}
                       admin={false}
                   />
                   ))}
