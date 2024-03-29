@@ -1,20 +1,22 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-import StarsCanvas from '../components/StarsCanvas';
-import Hero from '../components/Hero';
-import ProfilePreview from '../components/ProfilePreview';
-import CartPreview from '../components/CartPreview';
-import Navbar from '../components/Navbar';
-import Books from '../components/Books';
-import ScrollToTop from '../components/ScrollToTop';
+import StarsCanvas from '../components/StarsCanvas'
+import Hero from '../components/Hero'
+import ProfilePreview from '../components/ProfilePreview'
+import CartPreview from '../components/CartPreview'
+import Navbar from '../components/Navbar'
+import Books from '../components/Books'
+import ScrollToTop from '../components/ScrollToTop'
+import SimpleAlert from '../components/SimpleAlert'
 import '../index.css'
 import '../css/books.css'
 
-export default function Home ({ setLoggedIn, loggedIn, profile, borrowedBooks, booksData, removeFromCart, addToCart, cartCount }) {
+export default function Home ({ setLoggedIn, loggedIn, profile, borrowedBooks, booksData, removeFromCart, addToCart, cartCount, checkedOut, setCheckedOut }) {
 
     const [cartIsOpen, setCartIsOpen] = useState(false)
     const [profileIsOpen, setProfileIsOpen] = useState(false)
+    const [openAlert, setOpenAlert] = useState(false)
     const navigate = useNavigate()
 
     const handleEditButtonClick = () => {
@@ -29,9 +31,18 @@ export default function Home ({ setLoggedIn, loggedIn, profile, borrowedBooks, b
       setProfileIsOpen(!profileIsOpen)
     }
 
+    useEffect(()=>{
+      if (checkedOut === true){
+        setOpenAlert(true)
+      } else {
+        setOpenAlert(false)
+      }
+    }, [checkedOut])
+
     return (
         <div>
             <ScrollToTop />
+            <SimpleAlert text='Successfully Purchased Items.' open={openAlert} setOpen={setOpenAlert} />
             <CartPreview onClose={toggleCart} isOpen={cartIsOpen} cartItems={borrowedBooks} handleDelete={removeFromCart} />
             <Navbar 
                 background={'transparent'} 

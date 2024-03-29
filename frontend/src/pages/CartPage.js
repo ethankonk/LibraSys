@@ -5,7 +5,7 @@ import CartItem from '../components/CartItem'
 import Navbar from '../components/Navbar'
 // import PaymentComponent from '../components/Payment';
 
-export default function CartPage ({ borrowedBookIds, removeFromCart }) {
+export default function CartPage ({ borrowedBookIds, removeFromCart, handleCheckout }) {
   const [booksData, setBooksData] = useState([])
   const discount = 0.00;
 
@@ -35,10 +35,6 @@ export default function CartPage ({ borrowedBookIds, removeFromCart }) {
         setBooksData([])
     }
   }, [borrowedBookIds]); 
-
-  const handleCheckout = () => {
-    console.log('Checkout clicked')
-  };
 
   const subtotal = booksData.reduce((total, book) => total + book.price, 0);
   const total = subtotal-discount
@@ -73,7 +69,7 @@ export default function CartPage ({ borrowedBookIds, removeFromCart }) {
                 </div>
               </div>
               <div className='checkout-button-container'>
-                <button className='button primary checkout' onClick={handleCheckout}>Checkout - ${total.toFixed(2)} CAD</button>
+                <button className='button primary checkout' onClick={()=>handleCheckout()}>Checkout - ${total.toFixed(2)} CAD</button>
               </div>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 
 import Home from '../pages/Home'
 import BookPage from '../pages/BookPage'
@@ -13,12 +13,16 @@ export default function Main () {
     username: "",
     email: "",
     profilePicture: "profile-picture.jpeg",
+    userID: 0,
     permission: ''
   })
   const [booksData, setBooksData] = useState([])
   const [borrowedBooks, setBorrowedBooks] = useState([])
   const [cartCount, setCartCount] = useState(0)
   const [bookAdded, setBookAdded] = useState(0)
+  const [checkedOut, setCheckedOut] = useState(false)
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     // Fetch books data from PHP file
@@ -59,6 +63,13 @@ export default function Main () {
     setCartCount(cartCount-1)
   }
 
+  const handleCheckout = () => {
+    navigate('/')
+    setCheckedOut(true)
+    setBorrowedBooks([])
+    setCartCount(0)
+  }
+
   return (
     <Routes>
         <Route index element={<Home 
@@ -70,6 +81,8 @@ export default function Main () {
           cartCount={cartCount}
           addToCart={addToCart}
           removeFromCart={removeFromCart}
+          checkedOut={checkedOut}
+          setCheckedOut={setCheckedOut}
           />}>
         </Route>
         <Route exact path='/BookPage' element={<BookPage />}></Route>
@@ -78,6 +91,7 @@ export default function Main () {
           borrowedBookIds={borrowedBooks} 
           addToCart={addToCart}
           removeFromCart={removeFromCart}
+          handleCheckout={handleCheckout}
           />}>
         </Route>
         <Route exact path='/Admin' element={<AdminPage 

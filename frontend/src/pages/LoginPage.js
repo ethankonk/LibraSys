@@ -40,6 +40,7 @@ export default function LoginPage({ setProfile, setLoggedIn }) {
           ...prevProfile,
           username: data.username,
           email: email,
+          userID: data.userID,
           permission: data.permission,
         }))
         setLoggedIn(true)
@@ -76,6 +77,7 @@ export default function LoginPage({ setProfile, setLoggedIn }) {
           ...prevProfile,
           username: username,
           email: email,
+          userID: data.userID,
           permission: permission,
         }))
         setLoggedIn(true)
