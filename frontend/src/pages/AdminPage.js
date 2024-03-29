@@ -5,7 +5,7 @@ import Books from '../components/Books'
 import '../css/admin-page.css'
 import '../index.css'
 
-export default function AdminPage({ setBookAdded, booksData, cartCount, addToCart }) {
+export default function AdminPage({ setBookAdded,setBookRemoved, booksData, cartCount, addToCart }) {
     const [formData, setFormData] = useState({
         title: '',
         author: '',
@@ -45,22 +45,27 @@ export default function AdminPage({ setBookAdded, booksData, cartCount, addToCar
                 body: formDataToSend,
             });
             const data = await response.json();
-            console.log(data);
-            handleBookAdded();
+            if (data.success) {
+                console.log('Book uploaded successfully');
+                handleBookAdded();
+            } else {
+                console.error('Error uploading book:', data.error);
+            }
         } catch (error) {
             console.error('Error uploading book:', error);
         }
     };
 
-    function deleteBook(title) {
-        console.log(title);
+    function deleteBook(id) {
+        console.log(id);
         fetch('https://konkoloe.myweb.cs.uwindsor.ca/COMP-3077-W24/assignments/finalproject/backend/deleteBook.php', {
             method: 'POST',
-            body: JSON.stringify({ title: title }),
+            body: JSON.stringify({ ISBN: id }),
         })
         .then(response => {
             if (response.ok) {
                 console.log('Book deleted successfully');
+                setBookRemoved(prevBookRemoved => (prevBookRemoved+1))
             } else {
                 console.error('Failed to delete book');
             }

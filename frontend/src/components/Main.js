@@ -20,6 +20,7 @@ export default function Main () {
   const [borrowedBooks, setBorrowedBooks] = useState([])
   const [cartCount, setCartCount] = useState(0)
   const [bookAdded, setBookAdded] = useState(0)
+  const [bookRemoved, setBookRemoved] = useState(0)
   const [checkedOut, setCheckedOut] = useState(false)
 
   const navigate = useNavigate()
@@ -40,7 +41,7 @@ export default function Main () {
       .catch(error => {
         console.error("Error fetching books data:", error);
       });
-  }, [bookAdded]);
+  }, [bookAdded, bookRemoved]);
 
   const addToCart = (id) => {
     setBorrowedBooks(prevBorrowedBooks => {
@@ -64,10 +65,31 @@ export default function Main () {
   }
 
   const handleCheckout = () => {
-    navigate('/')
-    setCheckedOut(true)
-    setBorrowedBooks([])
-    setCartCount(0)
+    console.log(profile)
+    fetch('https://konkoloe.myweb.cs.uwindsor.ca/COMP-3077-W24/assignments/finalproject/backend/checkout.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            userID: profile.userID,
+            cartItems: borrowedBooks
+        }),
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log('Books borrowed successfully');
+            navigate('/')
+            setCheckedOut(true)
+            setBorrowedBooks([])
+            setCartCount(0)
+        } else {
+            throw new Error('Failed to borrow books');
+        }
+    })
+    .catch(error => {
+        console.error('Error borrowing books:', error);
+    });
   }
 
   return (
@@ -99,6 +121,7 @@ export default function Main () {
           booksData={booksData} 
           cartCount={cartCount}
           addToCart={addToCart} 
+          setBookRemoved={setBookRemoved}
         />}></Route>
     </Routes>
   );

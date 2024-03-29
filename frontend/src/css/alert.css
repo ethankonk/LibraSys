@@ -1,10 +1,13 @@
 .alert {
     position: absolute;
-
     display: flex;
     width: 50%;
     transform: translate(50%, 0);
     height: 20vh;
     align-items: center;
     justify-content: center;
+}
+
+.hidden {
+    pointer-events: none
 }

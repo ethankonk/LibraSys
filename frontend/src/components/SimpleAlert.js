@@ -7,7 +7,7 @@ import '../css/alert.css'
 
 export default function SimpleAlert({ open, setOpen }) {
   return (
-    <div className='alert'>
+    <div className={`alert ${open === true ? '' : 'hidden'}`}>
       <Collapse in={open}>
         <Alert
           action={
