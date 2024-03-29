@@ -53,23 +53,20 @@ export default function AdminPage({ setBookAdded, booksData, cartCount, addToCar
     };
 
     function deleteBook(title) {
-        console.log(title)
+        console.log(title);
         fetch('https://konkoloe.myweb.cs.uwindsor.ca/COMP-3077-W24/assignments/finalproject/backend/deleteBook.php', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
             body: JSON.stringify({ title: title }),
         })
         .then(response => {
             if (response.ok) {
                 console.log('Book deleted successfully');
+            } else {
+                console.error('Failed to delete book');
             }
-            throw new Error('Failed to delete book');
         })
         .catch(error => {
             console.error('Error deleting book:', error);
-            // Handle error
         });
     }
 

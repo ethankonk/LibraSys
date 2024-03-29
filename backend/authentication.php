@@ -28,7 +28,7 @@ if(isset($request['login'])) {
     if ($result->num_rows > 0) {
         // User found, login successful
         $row = $result->fetch_assoc();
-        echo json_encode(array("success" => true, "message" => "Login successful", "username" => $row['username']));
+        echo json_encode(array("success" => true, "message" => "Login successful", "username" => $row['username'], "permission" => $row['permissions']));
     } else {
         // User not found or incorrect credentials
         echo json_encode(array("success" => false, "message" => "Invalid email or password"));
@@ -40,6 +40,7 @@ if(isset($request['signup'])) {
     $email = $request['email'];
     $username = $request['username'];
     $password = $request['password'];
+    $permission = $request['permission'];
     
     // Query to check if email already exists
     $sql = "SELECT * FROM users WHERE email='$email'";
@@ -50,7 +51,7 @@ if(isset($request['signup'])) {
         echo json_encode(array("success" => false, "message" => "Email already registered"));
     } else {
         // Insert new user into database
-        $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
+        $sql = "INSERT INTO users (username, email, password, permissions) VALUES ('$username', '$email', '$password', '$permission')";
         if ($conn->query($sql) === TRUE) {
             // User registration successful
             echo json_encode(array("success" => true, "message" => "User registered successfully"));
