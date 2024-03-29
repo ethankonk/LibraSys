@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $isbn = $_POST['isbn'];
 
     // Upload cover image
-    $targetDir = __DIR__ . "/../build/static/media"; // Change this to your image directory
+    $targetDir = __DIR__ . "./../build/static/media/";
     $targetFile = $targetDir . basename($_FILES["coverImage"]["name"]);
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
@@ -57,21 +57,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Sorry, your file was not uploaded.";
     // if everything is ok, try to upload file
     } else {
-        if (move_uploaded_file($_FILES["coverImage"]["tmp_name"], $targetFile)) {
-            echo "The file ". htmlspecialchars(basename($_FILES["coverImage"]["name"])). " has been uploaded.";
+        $fileName = basename($_FILES["coverImage"]["name"]);
+        if (move_uploaded_file($_FILES["coverImage"]["tmp_name"], $targetDir . $fileName)) {
+            // Insert book data into database
+            $sql = "INSERT INTO BOOKS (ISBN, title, author, price, imageUrl) 
+            VALUES ('$isbn', '$title', '$author', '$price', '$fileName')";
+
+            if ($conn->query($sql) === TRUE) {
+                // Book inserted successfully
+                echo json_encode(array("success" => true));
+            } else {
+                // Error inserting book
+                echo json_encode(array("success" => false, "error" => "Error inserting book"));
+            }
         } else {
-            echo "Sorry, there was an error uploading your file.";
+            echo json_encode(array("success" => false, "error" => "Sorry, there was an error uploading your file."));
         }
-    }
-
-    // Insert book data into database
-    $sql = "INSERT INTO BOOKS (ISBN, title, author, price, imageUrl) 
-            VALUES ('$isbn', '$title', '$author', '$price', '$targetFile')";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
     }
 }
 

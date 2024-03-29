@@ -7,6 +7,9 @@ $username = $env["USERNAME"];
 $password = $env["PASSWORD"];
 $dbname = $env["DBNAME"];
 
+$data = file_get_contents("php://input");
+$request = json_decode($data, true);
+
 // Create a connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -18,16 +21,23 @@ if ($conn->connect_error) {
 // Check if the request method is POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Get title of the book to be deleted
-    $title = $_POST['title'];
+    $isbn = $request['ISBN'];
 
+    var_dump($title);
     // Prepare SQL statement to delete the book
-    $sql = "DELETE FROM BOOKS WHERE title = '$title'";
-
-    // Execute the SQL statement
-    if ($conn->query($sql) === TRUE) {
-        echo "Book deleted successfully";
+    $sql1 = "DELETE FROM BORROWED_BOOKS WHERE ISBN = '$isbn'";
+    if ($conn->query($sql1) === TRUE) {
+        echo "Record deleted from BORROWED_BOOKS successfully";
     } else {
-        echo "Error deleting book: " . $conn->error;
+        echo "Error deleting record from BORROWED_BOOKS: " . $conn->error;
+    }
+
+    // Then, delete from the BOOKS table
+    $sql2 = "DELETE FROM BOOKS WHERE ISBN = '$isbn'";
+    if ($conn->query($sql2) === TRUE) {
+        echo "Record deleted from BOOKS successfully";
+    } else {
+        echo "Error deleting record from BOOKS: " . $conn->error;
     }
 }
 

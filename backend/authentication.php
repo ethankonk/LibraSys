@@ -28,7 +28,8 @@ if(isset($request['login'])) {
     if ($result->num_rows > 0) {
         // User found, login successful
         $row = $result->fetch_assoc();
-        echo json_encode(array("success" => true, "message" => "Login successful", "username" => $row['username'], "permission" => $row['permissions']));
+        $id = intval($row['id']);
+        echo json_encode(array("success" => true, "message" => "Login successful", "username" => $row['username'], "userID" => $id, "permission" => $row['permissions']));
     } else {
         // User not found or incorrect credentials
         echo json_encode(array("success" => false, "message" => "Invalid email or password"));
@@ -54,7 +55,9 @@ if(isset($request['signup'])) {
         $sql = "INSERT INTO users (username, email, password, permissions) VALUES ('$username', '$email', '$password', '$permission')";
         if ($conn->query($sql) === TRUE) {
             // User registration successful
-            echo json_encode(array("success" => true, "message" => "User registered successfully"));
+            $row = $result->fetch_assoc();
+            $id = intval($row['id']);
+            echo json_encode(array("success" => true, "message" => "User registered successfully", "userID" => $id));
         } else {
             // Error occurred while registering user
             echo json_encode(array("success" => false, "message" => "Error registering user"));
