@@ -3,6 +3,18 @@ import { Line } from 'react-chartjs-2';
 
 const BooksBorrowedGraph = () => {
   const [chartData, setChartData] = useState([null]);
+  const sampleData = {
+    labels: ['2022-01-01', '2022-02-01', '2022-03-01', '2022-04-01', '2022-05-01'],
+    datasets: [
+        {
+            label: 'Books Borrowed Over Time',
+            data: [10, 20, 15, 25, 30], // Sample counts of books borrowed
+            fill: false,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1,
+        },
+    ],
+  };
 
   useEffect(() => {
     const fetchData = async () => {
