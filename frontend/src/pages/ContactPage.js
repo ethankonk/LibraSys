@@ -35,32 +35,35 @@ export default function ContactPage() {
         <h2>Contact Us</h2>
         <form onSubmit={handleSubmit}>
             <div className="form-group">
-            <label htmlFor="name">Name:</label>
+            <label className='contact-label' htmlFor="name">Name:</label>
             <input
                 type="text"
                 id="name"
                 name="name"
+                className='contact-input'
                 value={formData.name}
                 onChange={handleChange}
                 required
             />
             </div>
             <div className="form-group">
-            <label htmlFor="email">Email:</label>
+            <label className='contact-label' htmlFor="email">Email:</label>
             <input
                 type="email"
                 id="email"
                 name="email"
+                className='contact-input'
                 value={formData.email}
                 onChange={handleChange}
                 required
             />
             </div>
             <div className="form-group">
-            <label htmlFor="message">Message:</label>
+            <label className='contact-label' htmlFor="message">Message:</label>
             <textarea
                 id="message"
                 name="message"
+                className='contact-textarea'
                 value={formData.message}
                 onChange={handleChange}
                 required

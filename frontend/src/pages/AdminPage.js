@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import Navbar from '../components/Navbar'
 import Books from '../components/Books'
+import BorrowGraph from '../components/BorrowGraph'
 import '../css/admin-page.css'
 import '../index.css'
 
@@ -94,6 +95,9 @@ export default function AdminPage({ setBookAdded,setBookRemoved, booksData, cart
                         <input type="file" accept="image/*" onChange={handleImageChange} required />
                         <button className='button primary' type="submit">Submit</button>
                     </form>
+                </div>
+                <div className='graph box'>
+                    <BorrowGraph />
                 </div>
             </div>
             <div className= "book-container"> 
