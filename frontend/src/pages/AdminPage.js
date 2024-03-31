@@ -96,9 +96,6 @@ export default function AdminPage({ setBookAdded,setBookRemoved, booksData, cart
                         <button className='button primary' type="submit">Submit</button>
                     </form>
                 </div>
-                <div className='graph box'>
-                    <BorrowGraph />
-                </div>
             </div>
             <div className= "book-container"> 
                   {booksData.map(book => (

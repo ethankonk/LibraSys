@@ -22,7 +22,7 @@ ChartJS.register(
   );
 
 const BooksBorrowedGraph = () => {
-  const [chartData, setChartData] = useState([null]);
+  const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,12 +33,12 @@ const BooksBorrowedGraph = () => {
             }
             const data = await response.json();
             setChartData(data);
+            console.log(chartData[0].count)
+            console.log(chartData[0].date)
         } catch (error) {
             console.error('Error fetching data:', error);
         }
     };
-
-    console.log(chartData)
 
     fetchData();
   }, []);
